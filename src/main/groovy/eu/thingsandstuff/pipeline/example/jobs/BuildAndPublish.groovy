@@ -28,7 +28,7 @@ class BuildAndPublish extends MicroserviceJobDefinition {
                 }
             }
             addGradleBuildStep(job, project)
-            addArchiveJunitAsBuildStep(job)
+            //addArchiveJunitAsBuildStep(job)
             steps {
                 ifBuildStillSuccessful(delegate as StepContext) {
                     gradle("publish --stacktrace ${projectVersionParameters()}")
