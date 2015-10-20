@@ -10,14 +10,14 @@ import eu.thingsandstuff.pipeline.link.CombinedJobChainLink
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.APP_VERSION
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.GIT_COMMIT
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.PREV_APP_VERSION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getBUILD_AND_PUBLISH
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getDEPLOY_CURRENT_VERSION_TO_PRODUCTION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getDEPLOY_PREVIOUS_VERSION_TO_PRODUCTION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getFIND_PREVIOUS_PRODUCTION_VERSION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getNOTIFY_OF_PRODUCTION_DEPLOY
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getSMOKE_TEST_CURRENT_VERSION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getSMOKE_TEST_PREVIOUS_VERSION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getTAG_RELEASE
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.BUILD_AND_PUBLISH
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.DEPLOY_CURRENT_VERSION_TO_PRODUCTION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.DEPLOY_PREVIOUS_VERSION_TO_PRODUCTION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.FIND_PREVIOUS_PRODUCTION_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.NOTIFY_OF_PRODUCTION_DEPLOY
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.SMOKE_TEST_CURRENT_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.SMOKE_TEST_PREVIOUS_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.TAG_RELEASE
 import static eu.thingsandstuff.pipeline.link.AutoLink.auto
 
 class MicroservicePipelineTemplate implements PipelineTemplate<MicroserviceProject> {
