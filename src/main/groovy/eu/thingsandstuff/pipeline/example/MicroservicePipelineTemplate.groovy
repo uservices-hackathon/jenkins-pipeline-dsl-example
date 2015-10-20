@@ -1,5 +1,4 @@
 package eu.thingsandstuff.pipeline.example
-
 import eu.thingsandstuff.pipeline.JobChain
 import eu.thingsandstuff.pipeline.JobConfigurer
 import eu.thingsandstuff.pipeline.PipelineBuilder
@@ -11,9 +10,15 @@ import eu.thingsandstuff.pipeline.link.CombinedJobChainLink
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.APP_VERSION
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.GIT_COMMIT
 import static eu.thingsandstuff.pipeline.example.JenkinsVariable.PREV_APP_VERSION
-import static eu.thingsandstuff.pipeline.example.jobs.Jobs.*
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getBUILD_AND_PUBLISH
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getDEPLOY_CURRENT_VERSION_TO_PRODUCTION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getDEPLOY_PREVIOUS_VERSION_TO_PRODUCTION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getFIND_PREVIOUS_PRODUCTION_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getNOTIFY_OF_PRODUCTION_DEPLOY
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getSMOKE_TEST_CURRENT_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getSMOKE_TEST_PREVIOUS_VERSION
+import static eu.thingsandstuff.pipeline.example.jobs.Jobs.getTAG_RELEASE
 import static eu.thingsandstuff.pipeline.link.AutoLink.auto
-import static eu.thingsandstuff.pipeline.link.ManualLink.manual
 
 class MicroservicePipelineTemplate implements PipelineTemplate<MicroserviceProject> {
 
@@ -59,7 +64,7 @@ class MicroservicePipelineTemplate implements PipelineTemplate<MicroserviceProje
                     .then(auto(SMOKE_TEST_PREVIOUS_VERSION, TriggerCondition.UNSTABLE_OR_BETTER)
                         .withPredefinedProperties(PREV_APP_VERSION)
                     )
-                    .then(manual(DEPLOY_CURRENT_VERSION_TO_PRODUCTION))
+                    .then(auto(DEPLOY_CURRENT_VERSION_TO_PRODUCTION))
                     .then(CombinedJobChainLink.of(
                         auto(TAG_RELEASE, TriggerCondition.SUCCESS),
                         auto(DEPLOY_PREVIOUS_VERSION_TO_PRODUCTION, TriggerCondition.UNSTABLE_OR_WORSE)
