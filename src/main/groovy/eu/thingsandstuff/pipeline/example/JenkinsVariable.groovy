@@ -5,17 +5,27 @@ import eu.thingsandstuff.pipeline.Variable
 
 enum JenkinsVariable implements Variable {
 
-    PIPELINE_VERSION,
-    GIT_COMMIT,
     APP_VERSION,
-    PREV_APP_VERSION
+    PREV_APP_VERSION,
+    GIT_COMMIT,
+    BUILD_DATETIME,
+    BUILD_DISPLAY_NAME,
+    GIT_COMMIT_SHORT,
+    PIPELINE_VERSION,
+    BUILD_PHRASE,
+    AUTOMATIC_PR_BUILDING_ENABLED,
+    SCM_POLLING_ENABLED,
+    MICROSERVICE_RELEASE_TAG_PREFIX,
+    DEPLOY_ENV,
+    BUILD_NUMBER,
+    GIT_CHECKOUT_REF,
+    ENV_IS_BUILD_SERVER_INSTANCE
 
-    @Override
-    String getReference() {
-        return JenkinsVariables.reference(this)
-    }
+    final String reference
+    final String envReference
 
-    String getEnvReference() {
-        return JenkinsVariables.envReference(this)
+    JenkinsVariable() {
+        this.reference = JenkinsVariables.reference(this)
+        this.envReference = JenkinsVariables.envReference(this)
     }
 }

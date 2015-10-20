@@ -32,8 +32,8 @@ dependencies {
 
     compile 'org.codehaus.groovy:groovy-all:2.4.4'
     compile 'com.google.guava:guava:14.0'
-    compile "org.jenkins-ci.plugins:job-dsl:${project.ext.jobDslVersion}@jar"
-    compile "org.jenkins-ci.plugins:job-dsl-core:${project.ext.jobDslVersion}"
+    lib "org.jenkins-ci.plugins:job-dsl:${project.ext.jobDslVersion}@jar"
+    lib "org.jenkins-ci.plugins:job-dsl-core:${project.ext.jobDslVersion}"
 
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
         exclude module: 'groovy-all'
