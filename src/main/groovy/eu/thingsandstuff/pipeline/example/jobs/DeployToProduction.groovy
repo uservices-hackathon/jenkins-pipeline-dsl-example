@@ -6,6 +6,8 @@ import eu.thingsandstuff.pipeline.example.MicroserviceProject
 import eu.thingsandstuff.pipeline.example.ProjectVersion
 import javaposse.jobdsl.dsl.Job
 
+import static eu.thingsandstuff.pipeline.example.JenkinsVariable.APP_VERSION
+
 class DeployToProduction extends MicroserviceJobDefinition {
 
     private final ProjectVersion projectVersion
@@ -26,9 +28,9 @@ class DeployToProduction extends MicroserviceJobDefinition {
                 rundeck('deploy:deploy') {
                     options([
                             artifactId: project.effectiveArtifactId,
-                            groupId: project.gitConfig.group,
+                            groupId: project.groupId,
                             nexusUrl: 'http://nexus.uservices.pl:8081/nexus/content/repositories/releases/',
-                            version: '$PIPELINE_VERSION'
+                            version: APP_VERSION.reference
 
                     ])
                     shouldFailTheBuild()

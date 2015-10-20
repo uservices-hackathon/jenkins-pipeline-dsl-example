@@ -10,6 +10,7 @@ class MicroserviceProject implements Project {
     final String realDomainPart
     final String nameWithProduct
     final ScmConfig gitConfig
+    final String groupId
 
     /**
      *
@@ -18,20 +19,22 @@ class MicroserviceProject implements Project {
      * @param realDomainPart - e.g. "pl"
      * @param nameWithProduct - the name of the project with product "product-foo-bar"
      */
-    MicroserviceProject(String qualifiedName, String qualifiedProjectName, String realDomainPart, String nameWithProduct, ScmConfig scmConfig) {
+    MicroserviceProject(String qualifiedName, String qualifiedProjectName, String realDomainPart, String nameWithProduct, ScmConfig scmConfig, String groupId) {
         this.qualifiedName = qualifiedName
         this.qualifiedProjectName = qualifiedProjectName
         this.realDomainPart = realDomainPart
         this.nameWithProduct = nameWithProduct
         this.gitConfig = scmConfig
+        this.groupId = groupId
     }
 
-    MicroserviceProject(String qualifiedProjectName, String realDomainPart, ScmConfig scmConfig) {
+    MicroserviceProject(String qualifiedProjectName, String realDomainPart, ScmConfig scmConfig, String groupId) {
         this.qualifiedName = qualifiedProjectName
         this.qualifiedProjectName = qualifiedProjectName
         this.realDomainPart = realDomainPart
         this.nameWithProduct = qualifiedProjectName
         this.gitConfig = scmConfig
+        this.groupId = groupId
     }
 
     String getQualifiedProjectName() {
