@@ -1,4 +1,3 @@
-package eu.thigsandstuff.pipeline
 //make test failures not fail the build so that we can mark the build as unstable instead of failed
 allprojects {
     afterEvaluate {
