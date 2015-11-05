@@ -67,7 +67,7 @@ class BuildAndPublish extends MicroserviceJobDefinition {
             steps {
                 shell("cat > $initScriptName <<- EOF\n${initscript.text}\nEOF")
                 gradle(
-                        "clean build --init-script $initScriptName --continue --stacktrace --parallel -x test " +
+                        "clean build generateWireMockClientStubs --init-script $initScriptName --continue --stacktrace --parallel -x test " +
                                 projectVersionParameters()
                 )
             }
