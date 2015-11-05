@@ -11,8 +11,6 @@ abstract class DummyJobDefinition extends MicroserviceJobDefinition {
         job.with {
             steps {
                 shell(/echo "This is just a dummy placeholder for '${this.getJobLabel()}' job."/)
-                shell(/echo "Will terminate in 3 seconds."/)
-                shell(/sleep 3/)
                 shell(/echo "Bye!"/)
             }
         }
