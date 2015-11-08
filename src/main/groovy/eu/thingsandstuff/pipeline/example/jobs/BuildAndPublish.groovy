@@ -21,7 +21,7 @@ class BuildAndPublish extends MicroserviceJobDefinition {
         job.with {
             setupEnvironmentVariables(job)
             configure JobDslConfigureHacksUtil.injectAndMaskPasswords()
-            scm MicroserviceJobUtils.configureGit(project)
+            scm MicroserviceJobUtils.configureGit(project, 'zipkin')
             if (project.gitConfig.cronToPoll && jenkinsVariables.getBoolean(SCM_POLLING_ENABLED, true)) {
                 triggers {
                     scm(project.gitConfig.cronToPoll)
