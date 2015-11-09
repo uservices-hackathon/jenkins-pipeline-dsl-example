@@ -79,7 +79,7 @@ class MicroserviceViewsBuilder {
                         }
                         buildMonitorView("${realm}-deploy-to-prod-monitor") {
                             jobs {
-                                regex("^.*${realm}-deploy-to-prod\$")
+                                regex("^.*-deploy-current-to-production\$")
                             }
                         }
                     }
